@@ -1,4 +1,4 @@
-# SW API GraphQL
+# SW API GraphQL - Prueba Técnica
 
 ## Requirements
 * [Python](https://www.python.org/) (realizado en python 3.8)
@@ -8,33 +8,41 @@
 * [Graphene](https://github.com/graphql-python/graphene-django)
 * [.EVN](https://github.com/theskumar/python-dotenv)
 
-## Setup
+## Prerequisitos
+Es necesario tener instalado docker y docker-compose
 
-Clone the project
-```
-git clone https://github.com/gustav0/swapi.git
-```
+* [Docker](https://www.docker.com/get-started)
+* [Docker-compose](https://docs.docker.com/compose/install/)
 
-Move into de repo and install dependencies
-```
-pip install -r requirements.txt
-```
+## Instalación
+Ejecutar en la raiz del proyecto
 
-Run migrations and load fixtures
+Compilar y levantar el contenedor
 ```
-python manage.py migrate
-python manage.py load_fixtures
+$ docker-compose build
+$ docker-compose up -d
 ```
 
-### Running the server
+Una vez ejecutado, se procede a ejecutar las migraciones, load fixtures y crear un superusuario
 ```
-python manage.py runserver
+$ sudo docker-compose exec web bash
+$ python manage.py makemigrations
+$ python manage.py migrate
+$ python manage.py load_fixtures
+$ python manage.py createsuperuser
 ```
+
 If you want to check it out, access the graphi explorer here: `127.0.0.1:8000/explore`.
 
 The service should be available in the URL: `127.0.0.1:8000/graphql`.
 
-### Runing the tests
+## Test
+Unitest
 ```
 python manage.py test
+```
+
+Pytest
+```
+pytest
 ```
