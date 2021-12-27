@@ -46,3 +46,7 @@ Pytest
 ```
 pytest
 ```
+
+## Deploy in Heroku
+
+https://stark-bastion-62101.herokuapp.com/graphql/
