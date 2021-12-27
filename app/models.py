@@ -42,11 +42,30 @@ class People(TimeStampedModel, SimpleNameModel):
         (NA, 'N/A'),
     )
 
+    HAIR_COLORS = (
+        ('black', 'BLACK'),
+        ('brown', 'BROWN'),
+        ('blonde', 'BLONDE'),
+        ('red', 'RED'),
+        ('white', 'WHITE'),
+        ('bald', 'BALD'),
+    )
+
+    EYE_COLORS = (
+        ('black', 'BLACK'),
+        ('brown', 'BROWN'),
+        ('yellow', 'YELLOW'),
+        ('red', 'RED'),
+        ('green', 'GREEN'),
+        ('purple', 'PURPLE'),
+        ('unknown', 'UNKNOWN'),
+    )
+
     height = models.CharField(max_length=16, blank=True)
     mass = models.CharField(max_length=16, blank=True)
     hair_color = models.CharField(max_length=32, blank=True)
-    skin_color = models.CharField(max_length=32, blank=True)
-    eye_color = models.CharField(max_length=32, blank=True)
+    skin_color = models.CharField(max_length=32, blank=True, choices=HAIR_COLORS)
+    eye_color = models.CharField(max_length=32, blank=True, choices=EYE_COLORS)
     birth_year = models.CharField(max_length=16, blank=True)
     gender = models.CharField(max_length=64, choices=GENDER)
     home_world = models.ForeignKey(Planet, on_delete=models.CASCADE, related_name='inhabitants')
@@ -71,8 +90,19 @@ class Producer(SimpleNameModel):
 
 
 class Film(TimeStampedModel):
+    EPISODE_ID = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+        (6, '6'),
+        (7, '7'),
+        (8, '8'),
+        (9, '9'),
+    )
     title = models.CharField(max_length=100)
-    episode_id = models.PositiveSmallIntegerField()  # TODO: Agregar choices
+    episode_id = models.PositiveSmallIntegerField(choices=EPISODE_ID)  # TODO: Agregar choices OK
     opening_crawl = models.TextField(max_length=1000)
     release_date = models.DateField()
     director = models.ForeignKey(Director, on_delete=models.CASCADE, related_name='films')
