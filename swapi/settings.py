@@ -7,7 +7,7 @@ load_dotenv()  # Load env variables
 SECRET_KEY = os.getenv('SECRET_KEY', '-_(i9-#l=j&^ln1p&k2vk3tr710gyw9r&(m&cm8f7y^-z6uh-_')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '*']  # TODO: dejar solo la URL donde va a estar disponible
+ALLOWED_HOSTS = ['morning-savannah-00742']  # TODO: dejar solo la URL donde va a estar disponible
 
 INSTALLED_APPS = [
     'django.contrib.admin',
