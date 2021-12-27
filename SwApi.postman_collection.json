@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "8e0e2d26-edc4-4039-a97f-523bef75cd3e",
+		"name": "SwApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreatePeopleMutation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation createPeople{\n    createPeopleMutation(input: {\n      name: \"Robinson Giraldo Naranjo\"\n      gender: \"male\"\n      homeWorld: \"UGxhbmV0VHlwZTox\"\n      eyeColor: \"black\"\n      films:[\n        {\n          id: \"RmlsbVR5cGU6MTAw\"\n        }\n        {\n          id: \"RmlsbVR5cGU6NA==\"\n        }\n        {\n          id: \"RmlsbVR5cGU6NQ==\"\n        }\n      ]\n    })\n    {\n      people{\n        id\n        name\n        homeWorld{\n          name\n        }\n        films{\n          edges{\n            node{\n              title\n              id\n            }\n          }\n        }\n      }\n    }\n  }",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://stark-bastion-62101.herokuapp.com/graphql/",
+					"protocol": "https",
+					"host": [
+						"stark-bastion-62101",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdatePeopleMutation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation updatePeopleMutation{\n    updatePeopleMutation(input: {\n      id: \"UGVvcGxlVHlwZTo4OQ==\"\n      name: \"Stella Naranjo\"\n      height: \"200\"\n      mass: \"unknown\"\n      hairColor: \"black\"\n      eyeColor: \"brown\"\n      birthYear: \"unknown\"\n      gender: \"female\"\n      films: [\n        {\n          id: \"RmlsbVR5cGU6MTAw\"\n        }\n        {\n          id: \"RmlsbVR5cGU6NA==\"\n        }\n      ]\n    }) {\n      errors\n      clientMutationId\n      people {\n        id\n        name\n        height\n        gender\n        films{\n          edges{\n            node{\n              title\n            }\n          }\n        }\n      }\n    }\n  }",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://stark-bastion-62101.herokuapp.com/graphql/",
+					"protocol": "https",
+					"host": [
+						"stark-bastion-62101",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "QueryAllPeopleGender",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query{\n    allPeople(gender: \"male\"){\n        edges{\n            node{\n                id\n                name\n                gender\n            }\n        }\n    }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "https://stark-bastion-62101.herokuapp.com/graphql/",
+					"protocol": "https",
+					"host": [
+						"stark-bastion-62101",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
